@@ -1,0 +1,63 @@
+{% extends 'teacher_templates/base_teacher.html' %}
+
+{% block title %}{{ teacher }}-Post/Feed{% endblock title %}
+
+{% block nav_title %}Post/Feed{% endblock nav_title %}
+
+
+{% block body_content %}
+{% load crispy_forms_tags %}
+
+<div style="padding-top: 70px !important;">
+    <!-- Post Input -->
+  <div class="p-5 pb-0">
+    <h3>Post Here</h3>
+  </div>
+  <section class=" p-5 pt-0 container mt-5">
+          <form method="POST">
+          {% csrf_token %}
+            <div class="row">
+               <div class="col-md-10 col-7 my-auto">
+                  {{ post_form|crispy }}
+                </div>
+                <div class=" d-md-block col-md-2 col-4 btn">
+                      <button class="btn btn-outline-info btn-large" type="submit">Post</button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </form>
+      </div>         
+  </section>
+
+  <section  class=" p-5 container">
+      <hr class="text-info mb-5", style="height: 10px">
+      {% if posts|length == 0 %}
+          <div class="container p-5 bg-secondary">
+            <p class="text-center h1 text-light" style= "text-height: 30px">You haven't posted yet !</p>
+          </div>
+      {% endif %}
+      {%if posts %}
+      {% for post in posts %}
+        <div class="card mb-3">
+          <div class="card-body ">
+            <div class=" h3 card-title">{{ post.user_teacher }}</div>
+              <div class="text-secondary">{{ post.posted_on }} </div>
+              <div style="position: absolute; top: 1%; right: 1%;" class=" text-end">
+                <button style="box-shadow:none" class= "btn-light  border-0 " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class=" text-end fa fa-ellipsis-h" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="{% url 'teacher_post_delete_view' post.id %}"><i class=" me-2 far fa-edit"></i>Delete</a></li>
+                </ul>
+              </div>
+            <div>
+              {{ post.content| safe }}
+            </div> 
+          </div>          
+        </div>
+      {% endfor %}
+      {% endif %}
+      </section>
+
+{% endblock body_content %}

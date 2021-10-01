@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load crispy_forms_tags %}
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institution Registration Form</title>
+    <!--<script src="{% static 'js/tinymce/tinymce.min.js' %}"></script> -->
+    <!--<script type="text/javascript" src="{% static 'js/tinymce/custom.js' %}" ></script> -->
+    <script src="https://cdn.tiny.cloud/1/4skoaxgyl14ttmi14gruzwglaqzwg497zquxtut95damncn6/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <!-- Bootstrap CDNs -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <!-- <link rel="stylesheet" href="{% static 'js/tinymce/custom.css' %}">-->
+    
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand"> </a>
+            <form class="d-flex">
+                <a href="{% url 'index_landing_page'%}" class="btn btn-outline-primary me-2" type="button" style="text-decoration: None">Home</a>
+            </form>
+        </div>
+    </nav>
+
+    <section class="m-5">
+        <div class = "container">
+            <h2 class="section-header text-center text-primary h1">Institution Registration</h2>
+            <form  method="POST" class="mt-5" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                    {{ user_register_form|crispy }}
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                    {{ user_profile_form|crispy }}
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-lg btn-outline-primary mt-3">Register</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'autolink lists media table image',
+            toolbar: 'autolink lists media table image',
+            toolbar_mode: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+        });
+    </script>
+    <script src={% static 'js/js_register/dropdown.js' %}></script>
+</body>
+</html>

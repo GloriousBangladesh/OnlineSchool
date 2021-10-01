@@ -1,0 +1,59 @@
+{% extends 'student_templates/base_student.html' %}
+
+{% block title %}{{ student }}-index{% endblock title %}
+
+{% block nav_title %}Student Dashboard{% endblock nav_title %}
+
+{% block body_content %}
+
+    <div class="container my-auto justify-content-center p-5 mb-5" style="padding-top: 70px !important;">
+        <h1 class="text-center py-5">Select An Action To....... </h1>
+        <div class="container p-5">
+            <div class="row justify-content-center">
+              <!--onclick="location.href='{% url 'student_OnlineClasses_view' %}';"-->
+              <div onclick="showUnderdevPopup()" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4">
+                <div class="row  justify-content-around">
+                  <div class="align-middle  fs-4 category-name col-md-12"><i class="me-3 fas fa-chalkboard-teacher"></i>Online Classes</div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+              <div onclick="location.href='{% url 'student_classmate_view' %}';" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4">
+                <div class="row justify-content-around">
+                  <div class="align-middle fs-4 category-name col-md-12"><i class=" me-3 fas fa-book-reader"></i>Classmates</div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+              <div onclick="location.href='{% url 'student_notes_view' %}';" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4">
+                <div class="row justify-content-around">
+                  <div class="align-middle fs-4 category-name  col-md-12"><i class="me-3 fas fa-book"></i>Notes</div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+              <div onclick="location.href='{% url 'student_post_feed_view' %}';" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4">
+                <div class="row justify-content-around">
+                  <div class="align-middle fs-4 category-name col-md-12"><i class="me-3 fas fa-sticky-note"></i>Posts</div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+              <div onclick="showUnderdevPopup()" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4">
+                <div class="row justify-content-around">
+                  <div class="align-middle fs-4 category-name ms-5 col-md-12"><i class="me-3 fas fa-envelope"></i>Messages</div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+              <div onclick="location.href='{% url 'student_exam_view' %}';" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4">
+                <div class="row justify-content-around">
+                  <div class="align-middle fs-4 category-name col-md-12"><i class="me-3 fas fa-pen-square"></i>Exam</div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+              <div onclick="location.href='{% url 'institute_all_notices_view' %}';" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4">
+                <div class="row justify-content-around">
+                  <div class="align-middle fs-4 category-name col-md-12"><i class="me-3 fas fa-pen-square"></i>Notices</div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+{% endblock body_content %}

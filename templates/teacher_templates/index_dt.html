@@ -1,0 +1,57 @@
+{% extends 'teacher_templates/base_teacher.html' %}
+
+{% block title %}{{ teacher }}-Dashboard{% endblock title %}
+
+{% block nav_title %}Dashboard{% endblock nav_title %}
+
+
+{% block body_content %}
+
+  <div class="container  my-auto justify-content-center p-5 my-5 mb-5" style="padding-top: 70px !important;">
+    <h1 calss="text-center py-5">Select An Action To....... </h1>
+    <div class="container p-5">
+        <div class="row justify-content-center">
+          <!--onclick="location.href='{% url 'classes_teacher_view' %}';"-->
+          <button onclick="showUnderdevPopup()" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4 btn-lg btn">
+            <div class="row justify-content-around">
+              <div class="align-middle fs-4 category-name col-md-12"><i class="me-3 fas fa-chalkboard-teacher"></i>Classes</div>
+              <div class="col-md-2"></div>
+            </div>
+          </button>
+          <button onclick="location.href='{% url 'teacher_students_view' %}';" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4 btn-lg btn">
+            <div class="row justify-content-around">
+              <div class="align-middle fs-4 category-name col-md-12"><i class=" me-3 fas fa-book-reader"></i>Students</div>
+              <div class="col-md-2"><i class="twa twa-lg twa-fish"></i></div>
+            </div>
+          </button>
+          <button onclick="location.href='{% url 'post_feed_view' %}';" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4 btn-lg btn">
+            <div class="row justify-content-around">
+              <div class="align-middle fs-4 category-name col-md-12"><i class="me-3 fas fa-sticky-note"></i>Post To Feed</div>
+              <div class="col-md-2"><i class="twa twa-lg twa-mango"></i></div>
+            </div>
+          </button>
+          <button onclick="showUnderdevPopup()" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4 btn-lg btn">
+            <div class="row justify-content-around">
+              <div class="align-middle fs-4 category-name col-md-12"><i class="me-3 fas fa-envelope"></i>Messages</div>
+              <div class="col-md-2"><i class="twa twa-lg twa-fish"></i></div>
+            </div>
+          </button>
+          <button onclick="location.href='{% url 'exam_teacher_view' %}';" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4 btn-lg btn">
+            <div class="row justify-content-around">
+              <div class="align-middle fs-4 category-name col-md-12"><i class="me-3 fas fa-pen-square"></i>Exam</div>
+              <div class="col-md-2"></div>
+            </div>
+          </button>
+          <button onclick="location.href='{% url 'institute_all_notices_view' %}';" style="border-radius: 10px !important;" class="clickable p-3 bg-info mt-4 border text-center rounded-3 col-md-5 m-4 btn-lg btn">
+            <div class="row justify-content-around">
+              <div class="align-middle fs-4 category-name col-md-12"><i class="me-3 fas fa-exclamation-circle"></i>Notices</div>
+              <div class="col-md-2"></div>
+            </div>
+          </button>
+        </div>
+    </div>
+    
+  </div>
+
+
+{% endblock body_content %}

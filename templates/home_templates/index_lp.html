@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <!-- {% static 'css/css_dt/sidebar.css' %} -->
+
+    <!-- Bootstrap CDNs -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CUSTOM CSS -->
+    <link href="{% static 'lp_assets/css/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'lp_assets/plugins/onlineSchool-font/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'lp_assets/plugins/themify-icons/themify-icons.css' %}">
+
+    <!-- Slick Carousel -->
+    <link href="{% static 'lp_assets/plugins/slick/slick.css' %}" rel="stylesheet">
+    <!-- Slick Carousel Theme -->
+    <link href="{% static 'lp_assets/plugins/slick/slick-theme.css' %}" rel="stylesheet">
+
+    <!-- Animate.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Document</title>
+</head>
+<body>
+
+    <nav class="navbar nav-gradient main-nav fixed-top navbar-expand-lg large">
+        <div class="container">
+            <a class="navbar-brand" href="homepage.html"><img style="width: 14%;" id="nav-logo" src="{% static 'lp_assets/images/logo-black.png' %}" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="ti-android-menu"></span>
+            </button>
+            <div class="justify-content-end collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#banner">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#features">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#promo-vid">Screenshots</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#pricing">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#team">Team</a>
+              </li>
+              <li class="nav-item" onclick="showLoginPopup()">
+                <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> &nbsp; Login/Register</a>
+              </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--=====================================
+    =            Homepage Banner            =
+    ======================================-->
+
+    <section id="banner" class="banner bg-7">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 align-self-center">
+                    <!-- Contents -->
+                    <div class="content-block">
+                        <h1 id="banner-title">Classroom In Hand!</h1>
+                        <h5 id="banner-subtitle">Just like a real school but on screen</h5>
+                        <!-- App Badge -->
+                        <div class="app-badge">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#"><img class="img-fluid" src="{% static 'lp_assets/images/app-badge/google-play.png' %}" alt="google-play"></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#"><img class="img-fluid" src="{% static 'lp_assets/images/app-badge/app-store.png' %}" alt="app-store"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!-- App Image -->
+                    <div class="image-block">
+                        <img class="img-fluid" src="{% static 'lp_assets/images/phones/iphone-banner.png' %}" alt="iphone-banner">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====  End of Homepage Banner  ====-->
+
+    <section id="about" style="margin-top: -5%;" class="section pt-0 position-relative pull-top">
+        <div class="container">
+            <div class="rounded shadow p-5 bg-white">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mt-5 mt-md-0 text-center">
+                        <i class="ti-hand-open text-primary h1"></i>
+                        <h3 class="mt-4 text-capitalize h5 ">Social Power</h3>
+                        <p class="regular text-muted">Students can chat, post to feed and video chat with themselves and their teachers. Thus creating bond and socially engaging!
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mt-5 mt-md-0 text-center">
+                        <i class="ti-shine text-primary h1"></i>
+                        <h3 class="mt-4 text-capitalize h5 ">All features in one app</h3>
+                        <p class="regular text-muted">No need to hop different app for different purposes! Our app consists all the features you'll ever need to run an institution online, from online video class to exam paper submission!</p>
+                    </div>
+                    <div class="col-lg-4 col-md-12 mt-5 mt-lg-0 text-center">
+                        <i class="ti-thought text-primary h1"></i>
+                        <h3 class="mt-4 text-capitalize h5">Powerful Management</h3>
+                        <p class="regular text-muted">institution owners can add and remove students and teachers, assign students to classes, assign subjects to teachers and much much more.</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--==================================
+    =            Feature Grid            =
+    ===================================-->
+    <section id="features" class="feature section pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 ml-auto justify-content-center">
+                <!-- Feature Mockup -->
+                <div class="image-content" data-aos="fade-right">
+                    <img class="img-fluid" src="{% static 'lp_assets/images/feature/feature-new-01.jpg' %}" alt="iphone">
+                </div>
+            </div>
+            <div class="col-lg-6 mr-auto align-self-center">
+                <div class="feature-content">
+                    <!-- Feature Title -->
+                    <h2>The App that all Institution needs</h2>
+                    <!-- Feature Description -->
+                    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat.</p>
+                </div>
+                <!-- Testimonial Quote -->
+                <div class="testimonial">
+                    <p>
+                        "OnlineSchool is a window into everything from our institution that's being done online. It gets all of our best work in one
+                        place."
+                    </p>
+                    <ul class="list-inline meta">
+                        <li class="list-inline-item">
+                            <img src="{% static 'lp_assets/images/testimonial/feature-testimonial-thumb.jpg' %}" alt="">
+                        </li>
+                        <li class="list-inline-item">Jonathon Andrew , OnlineSchool.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="feature section pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 ml-auto align-self-center">
+                <div class="feature-content">
+                    <!-- Feature Title -->
+                    <h2>An All In One Solution That No App Has</h2>
+                    <!-- Feature Description -->
+                    <p>Our app consists a huge amount of features so that you never have to switch between app, which hampers productivity and workflow.</p>
+                </div>
+                <!-- Testimonial Quote -->
+                <div class="testimonial">
+                    <p>
+                        "OnlineSchool is a window into everything from our institution that's being done online. It gets all of our best work in one place."
+                    </p>
+                    <ul class="list-inline meta">
+                        <li class="list-inline-item">
+                            <img src="{% static 'lp_assets/images/testimonial/feature-testimonial-thumb.jpg' %}" alt="">
+                        </li>
+                        <li class="list-inline-item">Jonathon Andrew , OnlineSchool.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 mr-auto justify-content-center">
+                <!-- Feature mockup -->
+                <div class="image-content" data-aos="fade-left">
+                    <img class="img-fluid" src="{% static 'lp_assets/images/feature/feature-new-02.png' %}" alt="ipad">
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <!--====  End of Feature Grid  ====-->
+
+    <!--====  Promo-Vid  ====-->
+    <section id="promo-vid" class="video-promo section bg-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="content-block">
+                        <!-- Heading -->
+                        <h2>Watch Our Promo Video</h2>
+                        <!-- Promotional Speech -->
+                        <p style="color: black;">Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur arcu erat, accumsan id imperdiet et,
+                            porttitor at sem. Vivamus </p>
+                        <!-- Popup Video -->
+                        <a data-fancybox="" href="https://www.youtube.com/watch?v=jrkvirglgaQ">
+                            <i class="ti-control-play video"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Promo-Vid  ====-->
+
+    <!--====  Pricing  ====-->
+    <section id="pricing" class="pricing section bg-shape">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Choose Your Subscription Plan</h2>
+                        <p>Select a plan that suite your needs!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <!-- Pricing Table -->
+                    <div class="pricing-table text-center">	
+                        <!-- Title -->
+                        <div class="title">	
+                            <h5>Free</h5>
+                        </div>
+                        <!-- Price Tag -->
+                        <div class="price">	
+                            <p>$0<span>/month</span></p>
+                        </div>
+                        <!-- Features -->
+                        <ul class="feature-list">
+                            <li>Student Group & Posts</li>
+                            <li>Institution Notice Broadcasting</li>
+                            <li>Study Notes</li>
+                            <li>No Video Classes and Messaging</li>
+                        </ul>
+                        <!-- Take Action -->
+                        <div class="action-button">
+                            <a href="" class="btn btn-main-rounded">Start Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <!-- Pricing Table -->
+                    <div class="pricing-table featured text-center">	
+                        <!-- Title -->
+                        <div class="title">	
+                            <h5>Basic</h5>
+                        </div>
+                        <!-- Price Tag -->
+                        <div class="price">	
+                            <p>$8<span>/month</span></p>
+                        </div>
+                        <!-- Features -->
+                        <ul class="feature-list">
+                            <li>Student Group & Posts</li>
+                            <li>Institution Notice Broadcasting</li>
+                            <li>Study Notes</li>
+                            <li>Messaging</li>
+                            <li>Video Class using Zoom</li>
+                        </ul>
+                        <!-- Take Action -->
+                        <div class="action-button">
+                            <a href="" class="btn btn-main-rounded">Start Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 m-md-auto">
+                    <!-- Pricing Table -->
+                    <div class="pricing-table text-center">	
+                        <!-- Title -->
+                        <div class="title">	
+                            <h5>Advance</h5>
+                        </div>
+                        <!-- Price Tag -->
+                        <div class="price">	
+                            <p>$12<span>/month</span></p>
+                        </div>
+                        <!-- Features -->
+                        <ul class="feature-list">
+                            <li>Student Group & Posts</li>
+                            <li>Institution Notice Broadcasting</li>
+                            <li>Study Notes</li>
+                            <li>Messaging</li>
+                            <li>Video Class using Dedicated Server</li>
+                        </ul>
+                        <!-- Take Action -->
+                        <div class="action-button">
+                            <a href="" class="btn btn-main-rounded">Start Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Pricing  ====-->
+
+    <!--====  Download  ====-->
+    <section class="cta-download bg-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="image-block"><img class="img-fluid" src="{% static 'lp_assets/images/phones/iphone-chat.png' %}" alt=""></div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="content-block">
+                        <!-- Title -->
+                        <h2>Free Download Now</h2>
+                        <!-- Desctcription -->
+                        <p>Our app can be found in Google Play Store & App Store. But the web version can also be used.</p>
+                        <!-- App Badge -->
+                        <div class="app-badge">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#"><img class="img-fluid" src="{% static 'lp_assets/images/app-badge/google-play.png' %}" alt="google-play"></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#"><img class="img-fluid" src="{% static 'lp_assets/images/app-badge/app-store.png' %}" alt="app-store"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Download  ====-->
+
+    <!--====  Counter  ====-->
+    <section class="section counter bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="counter-item">
+                        <!-- Counter Number -->
+                        <h3>29k</h3>
+                        <!-- Counter Name -->
+                        <p>Download</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="counter-item">
+                        <!-- Counter Number -->
+                        <h3>1k</h3>
+                        <!-- Counter Name -->
+                        <p>Institutes</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="counter-item">
+                        <!-- Counter Number -->
+                        <h3>7k</h3>
+                        <!-- Counter Name -->
+                        <p>Teachers</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="counter-item">
+                        <!-- Counter Number -->
+                        <h3>50k<sup>+</sup></h3>
+                        <!-- Counter Name -->
+                        <p>Students</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Counter  ====-->
+
+    <!--====  Team Members  ====-->
+    <section id="team" class="section team bg-shape-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Our Creative Team</h2>
+                        <p>People behind the scene working morning to dawn.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <!-- Team Member -->
+                    <div class="team-member text-center">
+                        <div class="image">
+                            <img class="img-fluid" src="{% static 'lp_assets/images/team/member-one.jpg' %}" alt="team-member">
+                        </div>
+                        <div class="name">
+                            <h5>Johnny Depp</h5>
+                        </div>
+                        <div class="position">
+                            <p>Production Designer</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="progress" data-percent="85%">
+                                <div class="progress-bar" style="width: 85%;"></div>
+                            </div>
+                            <span>85%</span>
+                        </div>
+                        <ul class="social-icons list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-linkedin"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <!-- Team Member -->
+                    <div class="team-member text-center">
+                        <div class="image">
+                            <img class="img-fluid" src="{% static 'lp_assets/images/team/member-two.jpg' %}" alt="team-member">
+                        </div>
+                        <div class="name">
+                            <h5>cristin milioti</h5>
+                        </div>
+                        <div class="position">
+                            <p>UX Researcher</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="progress" data-percent="95%">
+                                <div class="progress-bar" style="width: 95%;"></div>
+                            </div>
+                            <span>95%</span>
+                        </div>
+                        <ul class="social-icons list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-linkedin"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <!-- Team Member -->
+                    <div class="team-member text-center">
+                        <div class="image">
+                            <img class="img-fluid" src="{% static 'lp_assets/images/team/member-three.jpg' %}" alt="team-member">
+                        </div>
+                        <div class="name">
+                            <h5>john doe</h5>
+                        </div>
+                        <div class="position">
+                            <p>Head of Ideas</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="progress" data-percent="80%">
+                                <div class="progress-bar" style="width: 80%;"></div>
+                            </div>
+                            <span>80%</span>
+                        </div>
+                        <ul class="social-icons list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-linkedin"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <!-- Team Member -->
+                    <div class="team-member text-center">
+                        <div class="image">
+                            <img class="img-fluid" src="{% static 'lp_assets/images/team/member-four.jpg' %}" alt="team-member">
+                        </div>
+                        <div class="name">
+                            <h5>mario gotze</h5>
+                        </div>
+                        <div class="position">
+                            <p>UX/UI designer</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="progress" data-percent="75%">
+                                <div class="progress-bar" style="width: 75%;"></div>
+                            </div>
+                            <span>75%</span>
+                        </div>
+                        <ul class="social-icons list-inline">
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-linkedin"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""><i class="ti-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====  End of Team Members  ====-->
+
+    <!--=================================
+    =            Testimonial            =
+    ==================================-->
+
+    <section class="section testimonial bg-primary-shape">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2 class="text-white">Our Happy Customers</h2>
+                        <p class="text-white">Demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee idea of denouncing pleasure and praising</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 m-auto">
+                    <!-- Testimonial Carosel -->
+                    <div class="testimonial-slider">
+                        <!-- testimonial item -->
+                        <div class="testimonial-item">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="content">
+                                        <div class="name">
+                                            <h5>Kris lazy Cistin Miloti</h5>
+                                        </div>
+                                        <div class="pos-in-com">
+                                            <p>CEO at<span>OnlineSchool</span></p>
+                                        </div>
+                                        <div class="speech">
+                                            <p>Explain to you how all this mistaken idea of denouncing tis pleasure and praising pain was born and I will give you a complete praising the account is account the. </p>
+                                        </div>
+                                        <div class="rating">
+                                            <ul class="rating list-inline">
+                                                <li class="list-inline-item">
+                                                    <i class="ti-star"></i>
+                                                    <i class="ti-star"></i>
+                                                    <i class="ti-star"></i>
+                                                    <i class="ti-star"></i>
+                                                    <i class="ti-star"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="image mt-5">
+                                        <img class="img-fluid" src="{% static 'lp_assets/images/testimonial/review-person-one.png' %}" alt="testimonial-person">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- testimonial item -->
+                        <div class="testimonial-item">
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="content">
+                                        <div class="name">
+                                            <h5>Kris lazy Cistin Miloti</h5>
+                                        </div>
+                                        <div class="pos-in-com">
+                                            <p>CEO at<span>OnlineSchool</span></p>
+                                        </div>
+                                        <div class="speech">
+                                            <p>Explain to you how all this mistaken idea of denouncing tis pleasure and praising pain was born and I will give you a complete praising the account is account the. </p>
+                                        </div>
+                                        <div class="rating">
+                                            <ul class="rating list-inline">
+                                                <li class="list-inline-item">
+                                                    <i class="ti-star"></i>
+                                                    <i class="ti-star"></i>
+                                                    <i class="ti-star"></i>
+                                                    <i class="ti-star"></i>
+                                                    <i class="ti-star"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="image mt-5">
+                                        <img class="img-fluid" src="{% static 'lp_assets/images/testimonial/review-person-one.png' %}" alt="testimonial-person">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="footer-main">
+        <div class="container align-item-center justify-content-between ">
+            <div class="row align-item-center justify-content between">
+                <div class="col-md-4">
+                    <h2 class="lead footer-bold">Educate</h2>
+                    <p class="footer-grey">Providing Life Changing Experiences Through Education. Class That Fit Your Busy Life. Closer to Home</p>
+                    <div class="white mt-2">
+                        <i class="fa fa-phone" aria-hidden="true"></i>&nbsp; 01912345678
+                    </div>
+
+                    <div class="white mt-2">
+                        <i class="fa fa-clock" aria-hidden="true"></i>&nbsp; Mon - Sat 8.00 - 18.00
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="lead footer-bold">Latest News</h2>
+                    <div class="white mt-2">
+                        Graduate Admissions
+                    </div>
+                    <div class="white mt-2">
+                        Continuing Education
+                    </div>
+                    <div class="white mt-2">
+                        Current Students
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="lead footer-bold">Useful Links</h2>
+                    <div class="white mt-2">
+                        About
+                    </div>
+                    <div class="white mt-2">
+                        Features
+                    </div>
+                    <div class="white mt-2">
+                        Pricing
+                    </div>
+                    <div class="white mt-2">
+                        Privacy Policy
+                    </div>
+                    <div class="white mt-2">
+                        Terms & Conditions
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <h2 class="lead footer-bold">Flexible learning</h2>
+                    <img class="img-fluid" src="{% static 'lp_assets/images/footer-map-2.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+        <hr class="mt-5">
+
+        <div class="mb-0 container">
+            <div class="row">
+
+                <div class="col-md-9 mt-2 sight-footer-legal">
+                    <a href="#" class="text-white">Copyright &copy; <span style="color: inherit;" id="year">2017</span> Online School. All Rights Reserved. </a>
+                </div>
+                <div class="col-md-3 mt-2 sight-footer-right">
+                    <p> <span class="text-light">You are not logged in.</span> <span class="clickable" onclick="showLoginPopup()" style="color: white; cursor: pointer;"> (Log in)</span> </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--====  End of Testimonial  ====-->
+
+
+    <script src="{% static 'lp_assets/plugins/jquery/jquery.js' %}"></script>
+    <script src="{% static 'lp_assets/plugins/slick/slick.min.js' %}"></script>
+    <script src="{% static 'lp_assets/js/custom.js' %}"></script>
+    <script src="{% static 'lp_assets/js/scroll.js' %}"></script>
+    <script src="{% static 'lp_assets/js/bgChange.js' %}"></script>
+    <script src="{% static 'lp_assets/js/loginPopUp.js' %}"></script>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        var interval = setInterval(function (){
+            if(screen.width <= 720){
+            var reviewButtonsPrev = document.getElementsByClassName("slick-prev")[0];
+            var reviewButtonsNext = document.getElementsByClassName("slick-next")[0];
+
+            reviewButtonsPrev.style.display = "none";
+            reviewButtonsNext.style.display = "none";
+
+            console.log("Screen size reduced!");
+            clearInterval(interval);
+        }
+        }, 2);
+        
+    </script>
+</body>
+</html>

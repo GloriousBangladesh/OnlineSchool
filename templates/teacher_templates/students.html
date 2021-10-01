@@ -1,0 +1,91 @@
+{% extends 'teacher_templates/base_teacher.html' %}
+
+{% block title %}{{ teacher }}-students{% endblock title %}
+
+{% block nav_title %}students{% endblock nav_title %}
+
+
+{% block body_content %}
+
+  <section class="p-5 pt-0" style="padding-top: 70px !important;">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="container mt-3">
+          {% if classes %}
+            {% for class in classes %}
+              {% if class == teacher_class.of_class  %}
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-heading1">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="true" aria-controls="flush-collapse1">
+                        Class {{ class.class_no }}
+                      </button>
+                    </h2>
+                    <div id="flush-collapse1" class="accordion-collapse collapse show" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                        <!-- Form row to input student Info -->
+                        <div class="row mb-3">
+                          <div class="col-2">
+                            <span class="fw-bold">Name</span>
+                          </div>
+                          <div class="col-2">
+                            <span class="fw-bold">Email</span>
+                          </div>
+                          <div class="col-1">
+                            <span class="fw-bold">Roll</span>
+                          </div>
+                          <div class="col-2">
+                            <span class="fw-bold">Phone Number</span>
+                          </div>
+                          <div class="col-2">
+                            <span class="fw-bold">Father's Name</span>
+                          </div>
+                          <div class="col-2">
+                            <span class="fw-bold">Mother's Name</span>
+                          </div>
+                        </div>
+                        <!-- Inputted info saved in a row -->
+                        {% for student in students %}
+                          {% if student.of_class == class %}
+                            <div class="row">
+                                <div class="col-2">
+                                    <div >
+                                        <small>{{student.user.username}}</small>
+                                    </div>
+                                </div>
+                                <div class="col-2 ">
+                                    <div >
+                                        <small>{{student.user.email}}</small>
+                                    </div>
+                                </div>
+                                <div class="col-1 ">
+                                    <div >
+                                        <small>{{ student.roll }}</small>
+                                    </div>
+                                </div>
+                                <div class="col-2 ">
+                                    <div >
+                                        <small>{{student.phone_number}}</small>
+                                    </div>
+                                </div>
+                                <div class="col-2 ">
+                                    <div >
+                                        <small>{{student.fathers_name}}</small>
+                                    </div>
+                                </div>
+                                <div class="col-2 ">
+                                  <div >
+                                      <small>{{student.mothers_name}}</small>
+                                  </div>
+                                </div>
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          </div>
+        </div>
+  </section> 
+{% endblock body_content %}

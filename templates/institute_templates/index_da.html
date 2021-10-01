@@ -1,0 +1,23 @@
+{% extends 'institute_templates/base_institute.html' %}
+
+{% block title %} {{ institute }}-Dashboard{% endblock title %}
+
+{% block navbar_title %}Dashboard{% endblock navbar_title %}
+
+{% block body_content %}
+    <section class="p-5 text-dark p5" style="padding-top: 70px !important;">
+        <h2 class="text-center section-header">School Authority Dashboard</h2>
+        <div class="container">
+            <div>
+                <p class="fw-lighter fst-italic"> {{ institute }}, open siderbar from the top left corner of the screen for more options</p>
+                <div>
+                    <h3><p class="fw-bold">General Report</p></h3>
+                    <section class="beg-light text-dark px-4">
+                        <p class="fst-normal">Total Students  : {{ total_students }}</p>
+                        <p class="fst-normal">Total Teachers  : {{ total_teachers }}</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock body_content %}

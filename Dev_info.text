@@ -1,0 +1,98 @@
+################### [[Models]] ################################################ [[Urls]] #########################
+|						       |							 |
+|*Institute -( Name : str			       |(home app)--> www.examplename.com			 |
+|	      short_desc : str			       |		|					 |
+|	      address : str			       |		|--> index_lp.html			 |
+|	      email: str			       |							 |
+|	      Phone: int			       |							 |
+|	      institute_img: png		       |							 |
+|	      owner_name(admin): str		       |(teacher app)--> www.example.com/teacher/sign-in 	 |
+|	    )					       |	    |	   |					 |
+|						       |	    |	   |--> signin_teacher.html		 |
+|						       |	    |						 |
+|______________ Class -( Name: str		       |	    |--> www.example.com/teacher/index		 |	
+|			 max_student: int	       |	    |	   |					 |
+|			 institute: obj		       |	    |	   |--> index_dt.html			 |
+|		      )				       |	    |						 |
+|  						       |	    |--> www.example.com/teacher/exam		 |
+|_______________ Subjects -( title: str		       |	    |	   |					 |
+|			     Class: obj		       |  	    |	   |--> exam_dt.html			 |
+|			  )			       |            |						 |
+|						       |            |--> www.example.com/teacher/classes         |
+|						       |	    |      |					 |
+|______________ Student -( Name: st		       |            |      |-->classes_dt.html			 |
+|			   profile_pic: png	       |            |						 |
+|			   phone: str		       |            |--> www.example.com/teacher/post-feed	 |
+|			   Roll: int		       |	    |      |					 |
+|			   Fathes Name: str	       |	    |      |--> post_to_feed_dt.html		 |
+|			   Mother's Name: str	       |	    |						 |
+|			   Email: str		       |  	    |--> www.example.com/teacher/students	 |
+|			   bikash/nogod_number: str    |	    	   |					 |
+|			   class: obj		       |		   |--> students.html			 |
+|			   Institute: obj	       |							 |
+|			 )			       |							 |
+|						       |							 |
+|______________ Teacher -( Name: str		       |(institute app)--> www.example.com/institute/register	 |
+|	                   Email: str		       |            |      |				         |
+|			   profile_pic: png	       |	    |	   |--> institution-register.html	 |
+|			   cv: pdf		       |            |						 |
+|			   bikash/nogod_number: str    |            |--> www.example.com/institute/index	 |
+|			   subjects: obj	       |	    |      |					 |
+|			 )			       |	    |	   |--> index_da.html			 |
+|						       |	    |						 |
+|						       |	    |--> www.example.com/institute/students	 |
+|______________ Class_routine - ( class: obj	       |	    |      |					 |
+|				  header: str	       |	    |      |--> students_da.html		 |
+|				  routine: png	       |            | 						 |
+|						       |	    |--> www.example.com/institute/teachers	 |
+|				)		       |	    |      |					 |
+|						       |	    |      |--> teachers_da.html		 |
+|						       |	    |						 |
+|______________ Notice - ( Class: obj(optional)	       |	    |--> www.example.com/institute/notice	 |
+|			   img: png (optional)	       |	    |      |				         |
+|			   header: str		       |	    |  	   |--> notice_ds.html			 |
+|			   Notice: str		       |	    |					         |
+|			   created_on: time_date       |	    |--> www.example.com/institute/sign-in       |
+|                        )                             |	    	   |				         |
+|                                                      |            	   |--> lgin.html                        |
+|_______________ exam_ans - ( ans:pdf/word/doc/png     |                                                         |
+|                             stbmuit: date&time       |	                                                 |
+|	                      sub: obj                 |                                                         |
+|			      class:obj		       |(student app)--> www.example.com/student/register        |
+| 			      exam: obj		       |	    |	   |                                     |
+|			      student: obj	       |            |	   |--> student-register.html            |
+|			    )		 	       |	    |	                                         |
+|						       |	    |--> www.example.com/sign-in                 |
+|______________ Exam - ( class: obj		       |	    |  	   |                                     |
+|			 subject: obj		       |	    |	   |-->Student_signin.html               |
+|			 teacher: obj		       |            |                                            |
+|			 qus: pdf/png		       |	    |--> www.example.com/student/index	         |
+|			 strat on: date_time	       |	    |      |                                     |
+|			 end on: date_time	       |	    |	   |--> index_ds.html                    |  
+|		      )				       |            |                                            |
+|						       |	    |--> www.example.com/student/my-profile      | 
+|						       |	    |      |                                     |
+|_______________ exam_ans - ( exam: obj		       |	    |	   |--> profile_student.html             |
+|			      submit: date_time	       |	    |                                            | 
+|			      student: obj	       |	    |--> www.example.com/student/online-classes  |	    
+|			      ans: pdf/doc/jpg	       |	    |	   |                                     |
+|			      class: obj	       |	    |	   |--> online_classes_ds.html           |
+|			      sub: obj		       |	    |                                            |
+|			    )			       |	    |--> www.example.com/student/exam            |
+|						       |	    |      |                                     |
+|						       |	    |	   |-->exam_ds.html                      |
+|						       |	    |                                            |
+|_______________ lib - ( class: obj (optional)	       |            |--> www.example.com/student/index           |
+|			 Name: str		       |	    |	   |                                     | 
+|			 cover_page: png	       |	    |	   |--> index_ds.html                    |
+|			 book: pdf		       |            |                                            |
+|		       )			       |            |--> www.example.com/student/notes           |
+|______________________________________________________|            |      |                                     |
+|======================================================|            |	   |--> notes_ds.html			 |									
+						       |            |                                            |
+						       |            |--> www.example.com/student/post-feed       |
+						       |                   |                                     |
+                                                       |                   |--> post_to_feed_ds.html             |
+						       |                                                         |
+						       |_________________________________________________________|
+                                                       |=========================================================|

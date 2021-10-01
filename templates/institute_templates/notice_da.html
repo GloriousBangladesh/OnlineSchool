@@ -1,0 +1,68 @@
+{% extends 'institute_templates/base_institute.html' %}
+
+{% block title %} {{ institute }}-Notices{% endblock title %}
+{% block navbar_title %}Notices{% endblock navbar_title %}
+
+{% block body_content %}
+{% load crispy_forms_tags %}
+  <!-- Wrapper For Body -->
+  <div style="padding-top: 70px !important;">
+
+    <!-- Post Input -->
+    <div class="p-5 pb-0">
+      <h3>Add Notices</h3>
+    </div>
+      <section class=" p-5 pt-0 container mt-5">
+        <div class="row">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ notice_form|crispy }}
+            <div class="my-3 py-3 text-center">
+            <button type="submit" class="btn btn-info btn-lg" type="button">Publish</button>
+            </div>
+        </form>
+        </div>         
+      </section>
+
+      <!-- Feed -->
+      <section  class=" p-5 container">
+      <hr class="text-info mb-5", style="height: 10px">
+      {% if notices|length == 0 %}
+          <div class="container p-5 bg-secondary">
+            <p class="text-center h1 text-light" style= "text-height: 30px">No Notice has been added yet !</p>
+          </div>
+      {% endif %}
+      {%if notices %}
+      {% for notice in notices %}
+        <div class="card mb-3">
+          <div class="card-body ">
+            <div class=" h3 card-title">{{ notice.notice_title }}</div>
+              <div class="text-secondary">{{ notice.created_on }} </div>
+              <div style="position: absolute; top: 1%; right: 1%;" class=" text-end">
+                <button style="box-shadow:none" class= "btn-light  border-0 " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class=" text-end fa fa-ellipsis-h" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#"><i class=" me-2 far fa-edit"></i>Edit</a></li>
+                  <li><a class="dropdown-item" href="{% url 'institute_notice_delete_view' notice.id %}"><i class=" me-2 fas fa-trash-alt"></i>Delete</a></li>
+                </ul>
+              </div>
+            <div>
+              {{ notice.notice_content| safe }}
+            </div> 
+            {% if notice.notice_img %}
+              <div class="d-flex justify-content-center m-5">
+                  <img class="img-thumbnail" src="{{ notice.img_url }}" alt="This is a image">
+              </div>
+            {% endif %}
+              <div >
+              <span><i class=" fas fa-file-pdf"></i></span><span class="ms-3">posted by {{ notice.user }}. </span> 
+              </div>
+          </div>          
+        </div>
+      {% endfor %}
+      {% endif %}
+      </section>
+  </div>
+
+{% endblock body_content %}

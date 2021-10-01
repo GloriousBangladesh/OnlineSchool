@@ -1,0 +1,15 @@
+.body{
+    height: 520px;
+    border: 1px solid rgb(194, 191, 191);
+
+}
+/* .btn{
+    height: 50px;
+} */
+.nt{
+    height: 100px !important;
+}
+.image{
+    width: 240px;
+    height:100%;
+}

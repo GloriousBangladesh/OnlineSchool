@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/css_dt/sidebar.css' %}">
+    <script src="https://cdn.tiny.cloud/1/4skoaxgyl14ttmi14gruzwglaqzwg497zquxtut95damncn6/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/4skoaxgyl14ttmi14gruzwglaqzwg497zquxtut95damncn6/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <!-- Bootstrap CDNs -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Unnecessary, Needed Only For DEMO -->
+    <link rel="stylesheet" href="css/notice.css">
+</head>
+<body>
+
+  <!-- navigation bar -->
+  <nav class="navbar navbar-expand-md navbar-light bg-info" style=" position: fixed; width: 100%; z-index: 100; ">
+    <div class="container-fluid my-auto">
+      <a class="navbar-brand my-auto">
+        <p class="text-dark mb-0"><span onclick="toggleSidebar()" class="clickable ms-2 me-3"><i class="fa fa-bars" aria-hidden="true"></i></span>{% block nav_title %}{% endblock nav_title %}</p>  
+      </a>
+      <div class="my-auto">
+        <div class="collapse navbar-collapse my-auto">
+          <a class="text-dark me-5 lead mb-0" href="{% url 'institute_signOut_view' %}"><span class="clickable"><span class="me-3"><i class="fas fa-sign-out-alt" aria-hidden="true"></span></i>Logout</span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+      <!-- sidenav -->
+    <section style="position: fixed; z-index: 90; margin-top: 50px;">
+        <div id="sidebar" class=" flex-column flex-shrink-0 p-3 text-dark shadow" style="width: 0px; height: 100vh;opacity: 0;transition: 0.5s; display: none;    background-color: white;">
+        <!-- <div href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            </div> -->
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li>
+            <a href="{% url 'index_teacher_view' %}" class="nav-link text-dark" aria-current="page">
+                <span class="me-2"><i class="fas fa-home"></i></span> 
+                <span>Dashboard</span> 
+            </a>
+            </li>
+            <li onclick="showUnderdevPopup()" class="sidebar-item">
+                <!--href="{% url 'classes_teacher_view' %}"--> 
+            <a class="nav-link text-dark">
+                <span class="me-2"><i class="fas fa-chalkboard-teacher"></i></span> 
+                <span>Classes</span>
+            </a>
+            </li>
+            <li class="sidebar-item">
+            <a href="{% url 'teacher_students_view' %}" class="nav-link text-dark">
+                <span class="me-2"><i class="fas fa-book-reader"></i></span>
+                <span>Students</span>
+            </a>
+            </li>
+            <li class="sidebar-item">
+            <a href="{% url 'post_feed_view' %}" class="nav-link text-dark">
+                <span class="me-2"><i class="fas fa-sticky-note"></i></span>
+                <span>Post To Feed</span>
+            </a>
+            </li>
+            <li class="sidebar-item">
+            <a onclick="showUnderdevPopup()" class="nav-link text-dark">
+                <span class="me-2"><i class="fas fa-envelope"></i></span>
+                <span>Messages</span>
+            </a>
+            </li>
+            <li class="sidebar-item">
+            <a href="{% url 'exam_teacher_view' %}" class="nav-link text-dark">
+                <span class="me-2"><i class="fas fa-pen-square"></i></span>
+                <span>Exam</span>
+            </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'institute_all_notices_view' %}" class="nav-link text-dark">
+                  <span class="me-2"><i class="fas fa-exclamation-circle"></i></span>
+                  <span>Notices</span>
+                </a>
+            </li>
+            <li id="sidebar-logout" class="sidebar-item">
+            <a href="{% url 'institute_signOut_view' %}" class="nav-link text-dark">
+                <span class="me-2"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></span>
+                <span>Logout</span>
+            </a>
+            </li>
+        </ul>
+        </div>
+    </section>
+
+
+    {% block body_content %}
+    {% endblock body_content %}
+
+    {% block extra_js %}
+    {% endblock extra_js %}
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'autolink lists media table image',
+            toolbar: 'autolink lists media table image',
+            toolbar_mode: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+        });
+    </script>
+
+
+    <script src="{% static 'js/js_dt/sidebar.js' %}"></script>
+    <script src="{% static 'js/js_dt/dropdown.js' %}"></script>
+    <script src="{% static 'js/js_dt/underdev.js' %}"></script>
+</body>
+
+
+</html>

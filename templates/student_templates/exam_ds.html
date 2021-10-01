@@ -1,0 +1,68 @@
+{% extends 'student_templates/base_student.html' %}
+
+{% block title %}{{student}}-Exams{% endblock title %}
+
+{% block nav_title %}Exam{% endblock nav_title %}
+
+
+{% block body_content %}
+{% load crispy_forms_tags %} 
+    <section style="padding-top: 70px !important;">
+        <div class="m-5">
+            <div class="pt-2 mb-4 text-center text-md-start">
+                <h3 class="fw-bold">Submit Exam Paper</h3>
+            </div>
+           </div>
+            <div class="container p-3  bg-light">
+                <div>
+                    <h3 class="mb-4">Upload Form</h3>
+                    <form method="POST" class="row" enctype="multipart/form-data">
+                        <div class="col-md-4 col-10 mb-3">
+                        {% csrf_token %}
+                            {{ form|crispy}}
+                        </div>
+                        <div class="col-md-2 col-6 ">
+                            <button class=" btn btn-info" type="submit"><span class="me-2 "><i class=" fas fa-file-upload"></i></span><span>Upload</span> </button>
+                        </div>
+                    </form>
+                 </div>
+            </div>
+        
+            <div class="justify-content-center" >
+                <div class="m-5">
+                    <div class="pt-2 mb-4 text-center text-md-start">
+                        <h3 class="fw-bold">Upcoming exams</h3>
+                    </div>
+                </div>
+        
+                <div class="row justify-content-center   table-responsive mx-3 mb-5">
+                    <table style="margin: 0 auto; max-width: 1150px;" class="table col-10">
+                      <thead>
+                        <tr class="d-flex">
+                         <th scope="row" class="col-3 col-md-3">ID</th>
+                         <th scope="col" class="col-5 col-md-3">Subject</th>
+                         <th scope="col" class="col-9 col-md-3">Date</th>
+                         <th scope="col" class="col-4 col-md-3">Time</th>
+                        </tr>
+                      </thead>
+                {% if exams %}
+                    {% for exam in exams %}
+                        {% if exam.of_class == student.student.of_class %}
+                        <tbody>
+                            <tr class="d-flex" >
+                            <td class="col-3 col-md-3">{{ exam.id}}</td>
+                            <td class="col-5 col-md-3">{{ exam.subject.subject_name}}</td>
+                            <td class="col-9 col-md-3">{{ exam.exam_day}}</td>
+                            <td class="col-4 col-md-3">{{exam.start_time}} - {{exam.end_time}}</td>
+                            </tr>
+                        </tbody>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                    </table>
+                  </div>
+            </div>
+        </div> 
+    </section>
+
+{% endblock body_content %}

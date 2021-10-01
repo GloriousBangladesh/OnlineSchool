@@ -1,0 +1,71 @@
+{% extends 'student_templates/base_student.html' %}
+
+{% block title %}{{ student }}-Classmates{% endblock title %}
+
+{% block nav_title %}Classmates{% endblock nav_title %}
+
+
+
+{% block body_content %}
+
+
+    
+<div class ="container py-5">
+  <section class="p-3 pt-0" style="padding-top: 70px !important;">
+    <div class="p-3 pb-0"><h3>Classmates</h3></div>
+              
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+
+          <!-- Class 1  section -->
+        {% if student %}
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-heading1">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+                Class {{ student.student.of_class.class_no }}
+              </button>
+            </h2>
+            <div id="flush-collapse1" class="accordion-collapse collapse show" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlushExample">
+
+              <div class="row justify-content-start justify-content-md-center table-responsive mx-2">
+                <table style="margin: 0 auto;" class="table col-12">
+                  <thead>
+                    <tr class="d-flex">
+                     <th scope="col">#</th>
+                     <th scope="row" class="col-3 col-md-2">Name</th>
+                     <th scope="col" class="col-4 col-md-2">Email</th>
+                     <th scope="col" class="col-1 col-md-1">Roll</th>
+                     <th scope="col" class="col-3 col-md-2">Phone Number</th>
+                     <th scope="col" class="col-3 col-md-2">Father's Name</th>
+                     <th scope="col" class="col-3 col-md-2">Mother's Name</th>
+                    </tr>
+                  </thead>
+              {% if class_mates %}
+                {% for mate in class_mates %}
+                  {% if mate.institute == student.student.institute and mate.of_class == student.student.of_class%}
+                  <tbody>
+                    <!-- Looping Content -->
+                    <tr class="d-flex" >
+                      <th scope="row">#</th>
+                      <td class="col-3 col-md-2">{{ mate.user.username }}</td>
+                      <td class="col-4 col-md-2">{{ mate.user.email }}</td>
+                      <td class="col-1 col-md-1">{{ mate.roll }}</td>
+                      <td class="col-3 col-md-2">{{ mate.phone_number }}</td>
+                      <td class="col-3 col-md-2">{{ mate.fathers_name }}</td>
+                      <td class="col-3 col-md-2">{{ mate.mothers_name }}</td>
+                    </tr>
+                  </tbody>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+                </table>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+       
+  </section>   
+</div>
+
+
+{% endblock body_content %}

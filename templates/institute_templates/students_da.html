@@ -1,0 +1,109 @@
+{% extends 'institute_templates/base_institute.html' %}
+
+{% block title %}{{ institute }}-Students{% endblock title %}
+
+{% block navbar_title %}Students{% endblock navbar_title %}
+
+{% block body_content %}
+{% load crispy_forms_tags %}
+  <section class="p-5 pt-0" style="padding-top: 70px !important;">
+    <div class="p-3 pb-0"><h3>Add Students to Classes</h3></div>
+      <!--input bar for classes button to add class-->
+        <form method="POST" class="row my-auto p-5">
+        {% csrf_token %}
+            <div class="col-lg-6 col-sm-12">
+              {{ student_user_form|crispy }}
+              {{ student_add_form|crispy }}
+            </div>
+            <div class="p-4 col-md-2 btn">
+                    <button type="submit" class="btn btn-outline-dark"> + Add
+                    </button>
+            </div>
+        </form>
+
+        <hr class="text-info my-3 p-2 mb-5">
+         
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+
+        {% if classes|length == 0 %}
+          <div class="container p-5 my-5 bg-secondary">
+              <p class="text-center h1 text-light" style= "text-height: 30px"><b>No Class has been added yet !</b></p>
+          </div>
+        {% endif %}
+
+        {% if classes %}
+            {% for class in classes %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="{{ class.id }}">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ class.class_no }}" aria-expanded="false" aria-controls="{{ class.class_no }}">
+                    class {{ class.class_no }}
+                  </button>
+                </h2>
+                <div id="{{ class.class_no }}" class="accordion-collapse collapse" aria-labelledby="{{ class.id }}" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <!-- Inputted info saved in a row -->
+                    {% if students %} 
+                      <!-- <ul class="list-group">
+                        {% for student in students %}
+                          {% if class == student.of_class %}
+                            <li class="list-group-item "><b>{{ student.user.username }}&nbsp &nbsp &nbsp &nbsp{{student.user.email}}&nbsp &nbsp &nbsp &nbsp{{student.fathers_name}}&nbsp &nbsp &nbsp &nbsp{{student.mothers_name}}&nbsp &nbsp &nbsp &nbsp{{student.roll}}</b></li>
+                          {% endif %}
+                        {% endfor %}
+                      </ul> -->
+
+                      <div class="container">
+                        <!-- <ul class="list-group"> -->
+                        <table style="margin: 0 auto;" class="table col-12">
+                            <thead>
+                                <tr class="d-flex">
+                                  <th scope="col">#</th>
+                                  <th scope="row" class="col-3 col-md-2">Name</th>
+                                  <th scope="col" class="col-3 col-md-2">Roll</th>
+                                  <th scope="col" class="col-4 col-md-3">Email</th>
+                                  <th scope="col" class="col-3 col-md-2">Father's Name</th>
+                                  <th scope="col" class="col-3 col-md-2">Mother's Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            
+                              {% for student in students %}
+                              {% if class == student.of_class %}
+                                    <!-- <li class="list-group-item text-center"><b>{{ teacher.user.username }}&nbsp &nbsp &nbsp &nbsp{{teacher.user.email}}&nbsp &nbsp &nbsp &nbsp{{teacher.phone_number}}&nbsp &nbsp &nbsp &nbsp{{teacher.subject}}</b></li> -->
+                                    <tr class="d-flex" >
+                                        <th scope="row">-</th>
+                                        <td class="col-3 col-md-2">{{ student.user.username }}</td>
+                                        <td class="col-3 col-md-2">{{ student.roll }}</td>  
+                                        <td class="col-4 col-md-3">{{ student.user.email }}</td>
+                                        <td class="col-3 col-md-2">{{ student.fathers_name }}</td>
+                                        <td class="col-3 col-md-2">{{ student.mothers_name }}</td>
+                                    </tr>
+                                   
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        {% endif %}
+
+        </div>
+  </section>
+  <script>
+    var tables = document.getElementsByTagName("table");
+
+    for(var i = 0; i < tables.length; i++){
+        var tbody = tables[i].getElementsByTagName("tbody")[0];
+        var trows = tbody.getElementsByTagName("tr");
+        for(var j = 0; j < trows.length; j++){
+            trows[j].getElementsByTagName("th")[0].textContent = j+1;
+        }
+    }
+</script>
+ 
+
+{% endblock body_content %}

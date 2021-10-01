@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    {% load crispy_forms_tags %}
+    <!-- Bootstrap CDNs -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand"> </a>
+            <form class="d-flex">
+                <button class="btn btn-outline-primary me-2" type="button">Home</button>
+            </form>
+        </div>
+    </nav>
+    
+    <section class="mt-5">
+        <h2 class="text-center section-header">Student Registration Form</h2>
+        <div class="container">
+            <form method="POST" class="m-5 row justify-content-center">
+                {% csrf_token %}
+                {{  form | crispy }}
+                <div class="input-group mb-3 justify-content-md-center justify-content-start">
+                    <button type="submit" class="btn btn-lg btn-primary">Register</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

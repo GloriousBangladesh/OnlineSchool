@@ -1,0 +1,83 @@
+{% extends 'teacher_templates/base_teacher.html' %}
+
+{% block title %}{{ teacher }}-Classes{% endblock title %}
+
+{% block nav_title %}Classes{% endblock nav_title %}
+
+
+{% block body_content %}
+
+    <section class="text-dark p5">
+
+        <div class="container">
+            <h2 class="text-left section-header">Add Teachers To Classes</h2>
+
+                <div class="mt-5 mb-5 row">
+
+                    <div class="col-lg-3">
+                        <div class="input-group mb-1">
+                            <input type="text" class="form-control" placeholder="Class Name i.e Class 6"
+                                aria-label="Username" aria-describedby="basic-addon1" />
+                        </div>
+                    </div>
+
+                    <div class="ms-5 col-lg-3 justify-content-center">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapseWidthExample">
+                            + Add
+                        </button>
+                    </div>
+
+                </div>
+
+                
+                <div class="accordion" id="accordionFlushExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#classone" aria-expanded="false" aria-controls="classone">
+                                Class 1 (Bangla)
+                            </button>
+                        </h2>
+
+                        <div id="classone" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div>
+                                    <span class="fw-bold">Links</span>
+                                </div>
+
+                                <div>
+                                    <span>hostname.com/m/istclass1-bangla-001</span> <button type="button" class="btn btn-primary btn-sm ms-3" style="padding: 0px;font-size: small;"><span class="me-2 ms-1"><i class="fas fa-running"></i></span><span class="me-2">Join Class</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headerTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#classTwo" aria-expanded="false" aria-controls="classTwo">
+                                Class 2 (English)
+                            </button>
+                        </h2>
+                        <div id="classTwo" class="accordion-collapse collapse" aria-labelledby="headerTwo"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div>
+                                    <span class="fw-bold">Links</span>
+                                </div>
+
+                                <div>
+                                    <span>hostname.com/m/istclass1-bangla-001</span> <button type="button" class="btn btn-primary btn-sm ms-3" style="padding: 0px;font-size: small;"><span class="me-2 ms-1"><i class="fas fa-running"></i></span><span class="me-2">Join Class</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+{% endblock body_content %}

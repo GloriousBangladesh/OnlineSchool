@@ -1,0 +1,107 @@
+{% extends 'institute_templates/base_institute.html' %}
+
+{% block title %} {{ institute }}-Teachers{% endblock title %}
+{% block navbar_title %}Teachers{% endblock navbar_title %}
+
+{% block body_content %}
+{% load crispy_forms_tags %}
+{% load static %}
+   <section class="text-dark p5">
+ 
+        <div class="container pt-5">
+            <h2 class="text-left section-header pt-5 ">Add Teachers To Classes</h2>
+
+                <div class="mt-5 pt-5 mb-5 row">
+                    <form method="POST">
+                        {% csrf_token %}
+                            {{ teacher_user_form|crispy }}
+                            {{ teacher_profile_form|crispy }}
+                            <div class="col-2">
+                                <button class="btn btn-primary" type="submit" data-bs-toggle="collapse"
+                                data-bs-target="#collapse2" aria-expanded="false"
+                                aria-controls="collapseWidthExample">
+                                 + Add
+                                </button>
+                            </div>
+                    </form>
+                </div>
+
+
+                <hr class="text-info my-3 p-2 mb-5">
+
+                
+        {% if classes|length == 0 %}
+            <div class="container p-5 my-5 bg-secondary">
+                <p class="text-center h1 text-light" style="text-height: 30px"><b>No Class has been added yet !</b></p>
+            </div>
+        {% endif %}
+
+        {% if classes %}
+        <div class="container mb-5 pb-5">
+            {% for class in classes %}
+                <div class="accordion pt-2" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="{{class.id}}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#{{class.class_no}}" aria-expanded="false" aria-controls="{{class.class_no}}">
+                                <b> Class {{ class.class_no }} </b>
+                            </button>
+                        </h2>
+                        <div id="{{class.class_no}}" class="accordion-collapse collapse" aria-labelledby="{{class.id}}"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                            {% if teachers %} 
+                                <div class="container">
+                                    <!-- <ul class="list-group"> -->
+                                    <table style="margin: 0 auto;" class="table col-12">
+                                        <thead>
+                                            <tr class="d-flex">
+                                            <th scope="col">#</th>
+                                            <th scope="row" class="col-3 col-md-2">Name</th>
+                                            <th scope="col" class="col-4 col-md-3">Email</th>
+                                            <th scope="col" class="col-3 col-md-2">Phone Number</th>
+                                            <th scope="col" class="col-3 col-md-2">Subject</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        {% for teacher in teachers %}
+                                            {% if class == teacher.of_class %}
+                                                <!-- <li class="list-group-item text-center"><b>{{ teacher.user.username }}&nbsp &nbsp &nbsp &nbsp{{teacher.user.email}}&nbsp &nbsp &nbsp &nbsp{{teacher.phone_number}}&nbsp &nbsp &nbsp &nbsp{{teacher.subject}}</b></li> -->
+                                                <tr class="d-flex" >
+                                                    <th scope="row">-</th>
+                                                    <td class="col-3 col-md-2">{{ teacher.user.username }}</td>
+                                                    <td class="col-4 col-md-3">{{ teacher.user.email }}</td>
+                                                    <td class="col-3 col-md-2">{{ teacher.phone_number }}</td>
+                                                    <td class="col-3 col-md-2">{{ teacher.subject.subject_name }}</td>  
+                                                </tr>
+                                               
+                                            {% endif %}
+                                        {% endfor %}
+                                        </tbody>
+                                      </table>
+                                </div>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        </div>
+    </section>
+ 
+    <script>
+        var tables = document.getElementsByTagName("table");
+
+        for(var i = 0; i < tables.length; i++){
+            var tbody = tables[i].getElementsByTagName("tbody")[0];
+            var trows = tbody.getElementsByTagName("tr");
+            for(var j = 0; j < trows.length; j++){
+                trows[j].getElementsByTagName("th")[0].textContent = j+1;
+            }
+        }
+    </script>
+
+{% endblock body_content %}

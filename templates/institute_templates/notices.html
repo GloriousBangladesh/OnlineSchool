@@ -1,0 +1,57 @@
+{% extends 'institute_templates/base_institute.html' %}
+
+{% block title %}Notices{% endblock title %}
+{% block navbar_title %}Notices{% endblock navbar_title %}
+
+{% block body_content %}
+    <section  class=" p-5 container" style="padding-top: 70px !important;">
+      {% if institute_notice|length == 0 and teacher_post|length == 0 %}
+          <div class="container p-5 mt-5 bg-secondary">
+            <p class="text-center h1 text-light" style= "text-height: 30px">No Notice has been added yet !</p>
+          </div>
+      {% endif %}
+      {%if institute_notice %}
+      {% for notice in institute_notice %}
+        <div class="card mb-3">
+          <div class="card-body ">
+            <div class=" h3 card-title">{{ notice.notice_title }}</div>
+              <div class="text-secondary">{{ notice.created_on }} </div>
+            <div class="mt-2">
+              {{ notice.notice_content| safe }}
+            </div> 
+            {% if notice.notice_img %}
+              <div class="d-flex justify-content-center m-5">
+                  <img class="img-thumbnail" src="{{ notice.img_url }}" alt="This is a image">
+              </div>
+            {% endif %}
+              <div >
+              <span><i class=" fas fa-file-pdf"></i></span><span class="ms-3">posted by {{ notice.user }}. </span> 
+              </div>
+          </div>          
+        </div>
+      {% endfor %}
+      {% endif %}
+      {%if teacher_post %}
+      {% for post in teacher_post %}
+        <div class="card mb-3">
+          <div class="card-body ">
+            <div class=" h3 card-title">{{ post.user_teacher }}</div>
+            <div class="text-secondary">{{ post.posted_on }} </div>
+            <div class="mt-2">
+              {{ post.content| safe }}
+            </div> 
+          </div>
+            
+            <!-- {% if post.notice_img %}
+              <div class="d-flex justify-content-center m-5">
+                  <img src="{{ post.img_url }}" alt="This is a image">
+              </div>
+            {% endif %} -->
+              <!-- <div >
+                <span><i class=" fas fa-file-pdf"></i></span><span class="ms-3">posted by {{ post.user }}. </span>
+              </div> -->
+        </div>          
+      {% endfor %}
+      {% endif %}
+      </section>
+{% endblock body_content %}

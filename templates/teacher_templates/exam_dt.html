@@ -1,0 +1,101 @@
+{% extends 'teacher_templates/base_teacher.html' %}
+
+{% block title %}{{ teacher }}-Exams{% endblock title %}
+
+{% block nav_title %}Exams{% endblock nav_title %}
+
+
+{% block body_content %}
+
+    <section style="padding-top: 70px !important;">
+        <div class="m-5">
+            <div class="pt-2 mb-4 text-center text-md-start">
+                <h3 class="fw-bold">Set up an exam</h3>
+            </div>
+           </div>
+           <div class="container p-3  bg-light">
+                <div>
+                    <h3>Set date &amp; time</h3>
+                    <form method="POST" class="row justify-content-md-around justify-content-start">
+                    {% csrf_token %}
+                        <div class=" mb-2 col-md-2 col-6">
+                            <label>Date</label>
+                            <input style="border-radius: 5px; width: 100%;" class="  bg-secondary " type="date" name="date">
+                        </div>
+                        <div class=" mb-2 col-md-2 col-6">
+                            <label>From</label>
+                            <input style="border-radius: 5px;width: 100%;" class="   bg-secondary " type="time" name="start_time">
+                        </div>
+                        <div class=" mb-2 col-md-2 col-6">
+                            <label>Till</label>
+                            <input style="border-radius: 5px;width: 100%;" class="   bg-secondary " type="time" name="end_time">
+                        </div>
+                        <div class="mb-2  col-md-2 col-6">
+                            <label>Class</label>
+                            <button style="border-radius: 5px;width: 100% !important;" class=" btn-secondary dropdown-toggle"
+                                id="dropdownSelectClass" data-bs-toggle="dropdown" aria-expanded="false">Select class</button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownSelectClass">
+                            {% if user_teacher %}
+                                <li onclick="examClassSelect(this, '{{ user_teacher.of_class.id }}')"><a class="dropdown-item">{{ user_teacher.of_class }}</a></li>
+                            {% endif %}
+                            </ul>
+                            <input id="examClassSelect" type="hidden" name="class" value=""/>
+                        </div>
+                        <div class="mb-2  col-md-2 col-6">
+                            <label>Subject</label>
+                            <button style="border-radius: 5px;width: 100% !important;" class=" btn-secondary dropdown-toggle"
+                                id="dropdownSelectSubject" data-bs-toggle="dropdown" aria-expanded="false">Subject</button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownSelectSubject">
+                            {% if user_teacher %}
+                                <li onclick="examSubjectSelect(this, '{{ user_teacher.subject.id }}')"><a class="dropdown-item">{{ user_teacher.subject }}</a></li>
+                            {% endif %}
+                            </ul>
+                            <input id="examSubjectSelect" type="hidden" name="subject" value=""/>
+                        </div>
+                        <div class="col-md-2 col-6 ">
+                            <label style="opacity: 0;">-</label><br/>
+                            <button style="border-radius: 5px;" class=" btn-info"><span class="me-2 "><i
+                            type="submit" class="fas  fa-check"></i></span><span>Set</span> </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+            <div class="justify-content-center mb-5 pb-5" >
+                <div class="m-5">
+                    <div class="pt-2 mb-4 text-center text-md-start">
+                        <h3 class="fw-bold">Upcoming exams</h3>
+                    </div>
+                </div>
+        
+                <div class="row justify-content-center table-responsive mx-3">
+                    <table style="margin: 0 auto; max-width: 1150px;" class="table">
+                      <thead>
+                        <tr class="d-flex justify-content-center">
+                         <th scope="row" class="col-3 col-md-2">Class</th>
+                         <th scope="col" class="col-5 col-md-2">Subject</th>
+                         <th scope="col" class="col-9 col-md-2">Date</th>
+                         <th scope="col" class="col-4 col-md-2">From</th>
+                         <th scope="col" class="col-4 col-md-2">Till</th>
+                        </tr>
+                      </thead>
+                    {% if exams %}
+                      {% for exam in exams %} 
+                      <tbody>
+                        <tr class="d-flex justify-content-center" >
+                          <td class="col-3 col-md-2">Class {{exam.of_class.class_no}}</td>
+                          <td class="col-5 col-md-2">{{ exam.subject.subject_name }}</td>
+                          <td class="col-9 col-md-2">{{ exam.exam_day }} </td>
+                          <td class="col-4 col-md-2">{{ exam.start_time }}</td>
+                          <td class="col-4 col-md-2">{{ exam.end_time }}</td>
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                    {% endif %}
+                    </table>
+                  </div>
+            </div>
+    </section>
+
+{% endblock body_content %}
+

@@ -1,0 +1,65 @@
+{% extends 'student_templates/base_student.html' %}
+
+{% block title %}{{ student }}-Notes{% endblock title %}
+
+{% block nav_title %}Notes{% endblock nav_title %}
+
+{% block body_content %}
+  {% load static %}
+  {% load crispy_forms_tags %}
+
+  <div style="padding-top: 70px !important;">
+    <!-- Post Input -->
+  <div class="p-5 pb-0">
+    <h3>Submit a note to your classmates!</h3>
+  </div>
+    <section class=" p-5 pt-0 container mt-5">
+      <div class="form-floating">
+        <form method="POST" class="row">
+        {% csrf_token %}
+          <div class="col-md-9">
+            {{ form|crispy }}
+          </div>
+          <div class=" d-md-block col-md-2 col-4 btn">
+            <button class="btn btn-info" type="submit">Publish</button>
+          </div>
+        </form>
+      </div>         
+    </section>
+
+    <!-- Feed -->
+    <section  class=" p-5 container">
+    <hr class="text-info mb-5", style="height: 10px">
+    {% if notes %}
+      {% for note in notes %}
+        {% if note.of_class == student.student.of_class %}
+            <div class="card mb-3">
+              <div class="card-body ">
+                <div class=" h3 card-title">{{ note.user_student }}</div>
+                  <div class="text-secondary">{{ note.posted_on }}</div>
+                  <div style="position: absolute; top: 1%; right: 1%;" class=" text-end">
+                    <button style="box-shadow:none" class= "btn-light  border-0 " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class=" text-end fa fa-ellipsis-h" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li class="sidebar-item"><a class="dropdown-item" href="#"><i class=" me-2 far fa-edit"></i>Edit</a></li>
+                      <li class="sidebar-item"><a class="dropdown-item" href="#"><i class=" me-2 fas fa-trash-alt"></i>Delete</a></li>
+                    </ul>
+                  </div>
+                  </div>
+                  <div class="mx-3">
+                    {{ note.content|safe }}
+                  </div> 
+                </div>          
+              </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    </section>
+  </div>
+{% endblock body_content %}  
+  
+{% block extra_js %}
+<script src="{% static 'js/js_ds/dropdown.js' %}"></script>
+{% endblock extra_js %}
+    

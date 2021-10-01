@@ -1,0 +1,68 @@
+{% extends 'student_templates/base_student.html' %}
+
+{% block title %}{{ student }}-OnlineClasses{% endblock title %}
+
+{% block nav_title %}Online Classes{% endblock nav_title %}
+
+{% block body_content %}
+{% load static %}
+    <section class="text-dark p5" style="padding-top: 70px !important;">
+
+        <div class="container">
+            <h2 class="text-left section-header my-3 py-3">Online Classes</h2>
+
+                
+                <div class="accordion" id="accordionFlushExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#classone" aria-expanded="false" aria-controls="classone">
+                                Bangla
+                            </button>
+                        </h2>
+
+                        <div id="classone" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div>
+                                    <span class="fw-bold">Links</span>
+                                </div>
+
+                                <div>
+                                    <span>hostname.com/m/istclass1-bangla-001</span> <button type="button" class="btn btn-primary btn-sm ms-3" style="padding: 0px;font-size: small;"><span class="me-2 ms-1"><i class="fas fa-running"></i></span><span class="me-2">Join Class</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headerTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#classTwo" aria-expanded="false" aria-controls="classTwo">
+                                English
+                            </button>
+                        </h2>
+                        <div id="classTwo" class="accordion-collapse collapse" aria-labelledby="headerTwo"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div>
+                                    <span class="fw-bold">Links</span>
+                                </div>
+
+                                <div>
+                                    <span>hostname.com/m/istclass1-bangla-001</span> <button type="button" class="btn btn-primary btn-sm ms-3" style="padding: 0px;font-size: small;"><span class="me-2 ms-1"><i class="fas fa-running"></i></span><span class="me-2">Join Class</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+{% endblock body_content %}
+
+{% block extra_js %}
+<script src="{% static 'js/js_ds/dropdown.js' %}"></script>
+{% endblock extra_js %}
